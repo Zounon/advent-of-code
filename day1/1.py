@@ -3,23 +3,23 @@ def part1(input):
     count = 0
 
     for instruction in input:
-        direction  = -1 if instruction[0] == 'L' else 1
+        direction = -1 if instruction[0] == "L" else 1
         distance = int(instruction[1:])
 
         dial += direction * distance
 
-        while (dial < 0 or dial > 99):
+        while dial < 0 or dial > 99:
             if dial < 0:
                 dial += 100
             elif dial > 99:
                 dial -= 100
 
-
         if dial == 0:
-            count+=1
+            count += 1
 
     # print(f"count is {count}")
     return count
+
 
 def part2(input):
     dial = 50
@@ -27,7 +27,7 @@ def part2(input):
     last_dial = dial
 
     for instruction in input:
-        direction  = -1 if instruction[0] == 'L' else 1
+        direction = -1 if instruction[0] == "L" else 1
         distance = int(instruction[1:])
 
         full_rotations = distance // 100
@@ -38,12 +38,12 @@ def part2(input):
         dial += direction * remaining_rotation
 
         if last_dial != 0 and dial < 0 or dial > 100:
-            count +=1
+            count += 1
 
         dial = dial % 100
 
         if dial == 0:
-            count +=1
+            count += 1
 
         last_dial = dial
         # print(f'\t{dial} {count}')
@@ -53,7 +53,7 @@ def part2(input):
 
 
 def main():
-    with open('./input1.txt') as file: 
+    with open("./input") as file:
         input = file.readlines()
 
     print(f"Answer to part1 is {part1(input)}")
